@@ -202,12 +202,6 @@ jobs:
       run: |
         cml comment create report.md
     
-    - name: Archive MLflow artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: mlflow-runs
-        path: mlruns/
-      if: always()
 
 
   # Optional: Run comparison experiments on dev branch
@@ -249,8 +243,3 @@ jobs:
           --mlflow-tracking-uri "${MLFLOW_TRACKING_URI:-file:///./mlruns}" \
           --experiment-name "iris-classification-dev-ci"
     
-    - name: Archive experiment results
-      uses: actions/upload-artifact@v3
-      with:
-        name: experiment-results
-        path: mlruns/
