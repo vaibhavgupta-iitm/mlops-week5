@@ -1,0 +1,13 @@
+pandas
+scikit-learn
+joblib
+numpy
+google-cloud-storage
+google-cloud-aiplatform
+dvc[gcs]
+dvc-gs
+pytest
+pytest-cov
+mlflow
+matplotlib
+seaborn
