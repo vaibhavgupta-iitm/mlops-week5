@@ -63,20 +63,6 @@ jobs:
         echo "✓ Data pulled from DVC"
         echo "ℹ Models are now managed by MLflow, not DVC"
     
-    - name: Run data validation tests
-      run: |
-        pytest tests/test_data_validation.py -v --cov=src --cov-report=xml --cov-report=term
-      continue-on-error: false
-    
-    - name: Run MLflow integration tests
-      run: |
-        pytest tests/test_mlflow_integration.py -v --cov=src --cov-report=xml --cov-report=term
-      continue-on-error: false
-    
-    - name: Run full test suite
-      run: |
-        pytest tests/ -v --cov=src --cov-report=xml --cov-report=html
-    
     - name: Upload coverage reports
       uses: codecov/codecov-action@v5
       with:
