@@ -1,5 +1,0 @@
-[core]
-    remote = gcsremote
-['remote "gcsremote"']
-    url = gs://mlops-course-verdant-victory-473118-k0-unique-week2-2/iris-pipeline
-    credentialpath = /Users/vaibhavgupta/Developer/MLOps/Week5/gcp_auth_key.json
