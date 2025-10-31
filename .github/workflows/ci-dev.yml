@@ -133,16 +133,6 @@ jobs:
           exit 1
         fi
     
-    - name: Upload test artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: test-results-dev
-        path: |
-          htmlcov/
-          coverage.xml
-          iris-dvc-pipeline/metrics.txt
-      if: always()
-    
     - name: Setup CML
       uses: iterative/setup-cml@v1
     
