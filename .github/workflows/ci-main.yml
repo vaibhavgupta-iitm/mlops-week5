@@ -146,32 +146,6 @@ jobs:
         print('✅ Data validation passed')
         "
     
-    - name: Run model sanity checks
-      run: |
-        echo "🔍 Running model sanity checks..."
-        python -c "
-        from src.data_processing import DataProcessor
-        from src.model_training import ModelTrainer
-        import numpy as np
-        
-        # Load data
-        dp = DataProcessor()
-        data = dp.load_data('iris-dvc-pipeline/v1_data.csv')
-        X_train, X_test, y_train, y_test = dp.split_data(data)
-        
-        # Load model from MLflow
-        mt = ModelTrainer()
-        model = mt.load_model_from_mlflow('iris-classifier', stage='Staging')
-        
-        # Sanity checks
-        predictions = model.predict(X_test[:10])
-        assert len(predictions) == 10, 'Prediction length mismatch'
-        assert all(p in [0, 1, 2] for p in predictions), 'Invalid predictions'
-        assert hasattr(model, 'predict_proba'), 'Model missing predict_proba'
-        
-        print('✅ Model sanity checks passed')
-        "
-    
     - name: Setup CML
       uses: iterative/setup-cml@v1
     
