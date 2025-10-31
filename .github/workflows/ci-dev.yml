@@ -80,7 +80,7 @@ jobs:
           --data-path iris-dvc-pipeline/v1_data.csv \
           --use-mlflow-model \
           --model-stage Production \
-          --mlflow-tracking-uri "${MLFLOW_TRACKING_URI:-file:///./mlruns}" \
+          --mlflow-tracking-uri "${MLFLOW_TRACKING_URI:-file:./mlruns}" \
           --metrics-path iris-dvc-pipeline/metrics.txt 2>/dev/null; then
           echo "✓ Loaded model from MLflow Production stage"
           echo "model_source=mlflow_production" >> $GITHUB_OUTPUT
@@ -89,7 +89,7 @@ jobs:
           python main.py \
             --data-path iris-dvc-pipeline/v1_data.csv \
             --hyperparameter-tuning \
-            --mlflow-tracking-uri "${MLFLOW_TRACKING_URI:-file:///./mlruns}" \
+            --mlflow-tracking-uri "${MLFLOW_TRACKING_URI:-file:./mlruns}" \
             --metrics-path iris-dvc-pipeline/metrics.txt
           echo "model_source=newly_trained" >> $GITHUB_OUTPUT
         fi
@@ -222,6 +222,6 @@ jobs:
         echo "🔬 Running comparison experiments..."
         python run_experiments.py \
           --data-path iris-dvc-pipeline/v1_data.csv \
-          --mlflow-tracking-uri "${MLFLOW_TRACKING_URI:-file:///./mlruns}" \
+          --mlflow-tracking-uri "${MLFLOW_TRACKING_URI:-file:./mlruns}" \
           --experiment-name "iris-classification-dev-ci"
     
